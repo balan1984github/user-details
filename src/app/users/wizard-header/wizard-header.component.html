@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="wizard-navigation-bar">
+    <div *ngFor="let wizard of wizardNavigationDetails; let i=index">
+      <div class="navigation">
+        <div class="link" routerLink="/{{wizard.routLink}}" routerLinkActive="isActive">Step {{ i+1 }}</div>
+        <div class="link" routerLink="/{{wizard.routLink}}" routerLinkActive="isActive">{{ wizard.name }}</div>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>

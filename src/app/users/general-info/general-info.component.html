@@ -1,0 +1,92 @@
+<div class="card">
+  <div class="card-body">
+    <div class="generalInfoFormGroup">
+      <form [formGroup]="generalInfoFormGroup">
+        <div class="row">
+          <div class="col-sm-6 col-md-4 col-xl-3 col-lg-3">
+            <div class="form-field">
+              <label for="fName">First Name</label>
+              <input type="text" id="fName" required formControlName="firstName" minlength="3" maxlength="16"
+                (blur)="getFullName()">
+              <div
+                *ngIf="generalInfoFormGroup.get('firstName').invalid && (generalInfoFormGroup.get('firstName').dirty || generalInfoFormGroup.get('firstName').touched)"
+                class="validation-err-msg">
+                <div *ngIf="generalInfoFormGroup.get('firstName').errors.required">
+                  First Name is required.
+                </div>
+                <div *ngIf="generalInfoFormGroup.get('firstName').errors.minlength">
+                  First Name minimum length is 3
+                </div>
+                <div *ngIf="generalInfoFormGroup.get('firstName').errors.minlength">
+                  First Name maximum length is 15
+                </div>
+                <div *ngIf="generalInfoFormGroup.get('firstName').errors.pattern">
+                  Enter only Alphabets
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-xl-3 col-lg-3">
+            <div class="form-field">
+              <label for="lName">Last Name</label>
+              <input type="text" id="lName" required formControlName="lastName" (blur)="getFullName()" minlength="3"
+                maxlength="16">
+              <div
+                *ngIf="generalInfoFormGroup.get('lastName').invalid && (generalInfoFormGroup.get('lastName').dirty || generalInfoFormGroup.get('lastName').touched)"
+                class="validation-err-msg">
+                <div *ngIf="generalInfoFormGroup.get('lastName').errors.required">
+                  First Name is required.
+                </div>
+                <div *ngIf="generalInfoFormGroup.get('lastName').errors.minlength">
+                  First Name minimum length is 3
+                </div>
+                <div *ngIf="generalInfoFormGroup.get('lastName').errors.minlength">
+                  First Name maximum length is 15
+                </div>
+                <div *ngIf="generalInfoFormGroup.get('lastName').errors.pattern">
+                  Enter only Alphabets
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-xl-3 col-lg-3">
+            <div class="form-field">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" required formControlName="fullName" [readonly]="true">
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-xl-3 col-lg-3">
+            <div class="form-field">
+              <label for="dob">Date of Birth</label>
+              <input type="date" id="dob" required formControlName="dateOfBirth" (blur)="calcAge()">
+              <div
+                *ngIf="generalInfoFormGroup.get('dateOfBirth').invalid && (generalInfoFormGroup.get('dateOfBirth').dirty || generalInfoFormGroup.get('dateOfBirth').touched)"
+                class="validation-err-msg">
+                <div *ngIf="generalInfoFormGroup.get('dateOfBirth').errors.required">
+                  Date of Birth is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-xl-3 col-lg-3">
+            <div class="form-field">
+              <label for="age">Age</label>
+              <input type="text" id="age" required formControlName="age" [readonly]="true">
+              <div
+                *ngIf="generalInfoFormGroup.get('age').invalid && (generalInfoFormGroup.get('age').dirty || generalInfoFormGroup.get('age').touched)"
+                class="validation-err-msg">
+                <div *ngIf="generalInfoFormGroup.get('age').errors.pattern">
+                  Age should be between range 18 to 79
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <button class="btn-primary" [disabled]="generalInfoFormGroup.status == 'INVALID'"
+            (click)="getGeneralInfoFormValue()">Next</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

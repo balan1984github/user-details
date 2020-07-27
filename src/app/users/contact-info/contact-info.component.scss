@@ -1,0 +1,18 @@
+.skillRow {
+  display: grid;
+  grid-template-rows: auto auto;
+}
+
+.emailRow {
+  display: grid;
+  grid-template-columns: 23% 45%;
+}
+
+.social {
+  display: grid;
+  grid-template-columns: 23% 20% 10%;
+}
+
+.delete {
+  align-self: center;
+}

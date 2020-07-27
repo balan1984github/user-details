@@ -1,0 +1,14 @@
+.success-info {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-gap: 22px;
+}
+
+.submit-msg {
+  font-weight: 500;
+  justify-self: center;
+}
+
+.submit-btn {
+  justify-self: center;
+}

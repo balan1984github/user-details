@@ -1,0 +1,24 @@
+.container {
+  width: 100%;
+}
+
+.wizard-navigation-bar{
+  counter-reset: step;
+}
+
+.wizard-navigation-bar .navigation{
+  list-style-type: none;
+  float: left;
+  width:20%;
+  position: relative;
+  text-align: center;
+}
+
+.link {
+  cursor: pointer;
+}
+
+.isActive{
+  color:#9400D3;
+  font-weight:bold;
+}

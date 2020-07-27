@@ -1,0 +1,82 @@
+<div class="card">
+  <div class="card-body">
+    <div class="contactInfoFormGroup">
+      <form [formGroup]="contactInfoFormGroup">
+        <div class="skillRow">
+          <div class="emailRow">
+            <div class="form-field">
+              <label for="emai">Email</label>
+              <input type="text" id="emai" required formControlName="email">
+              <div
+                *ngIf="contactInfoFormGroup.get('email').invalid && (contactInfoFormGroup.get('email').dirty || contactInfoFormGroup.get('email').touched)"
+                class="validation-err-msg">
+                <div *ngIf="contactInfoFormGroup.get('email').errors.required">
+                  Email is Required
+                </div>
+                <div *ngIf="contactInfoFormGroup.get('email').errors.pattern">
+                  Enter valid Email Address
+                </div>
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="phone">Phone</label>
+              <input type="text" id="phone" required formControlName="phoneNumber" maxlength="10">
+              <div
+                *ngIf="contactInfoFormGroup.get('phoneNumber').invalid && (contactInfoFormGroup.get('phoneNumber').dirty || contactInfoFormGroup.get('phoneNumber').touched)"
+                class="validation-err-msg">
+                <div *ngIf="contactInfoFormGroup.get('phoneNumber').errors.required">
+                  Phone Number is Required
+                </div>
+                <div *ngIf="contactInfoFormGroup.get('phoneNumber').errors.pattern">
+                  Enter valid Phone Number
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngFor="let control of socialInfoFormArray.controls; let i=index">
+            <div [formGroup]="control" class="social">
+              <div class="form-field">
+                <label for="socURL">Social URL</label>
+                <input type="text" id="socURL" required formControlName="socialURL">
+                <div
+                  *ngIf="control.get('socialURL').invalid && (control.get('socialURL').dirty || control.get('socialURL').touched)"
+                  class="validation-err-msg">
+                  <div *ngIf="control.get('socialURL').errors.required">
+                    Social URL is Required
+                  </div>
+                  <div *ngIf="control.get('socialURL').errors.pattern">
+                    Enter valid Social Web Address
+                  </div>
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="socURLType">Social URL Type</label>
+                <input type="text" id="socURLType" required formControlName="urlType">
+                <div
+                  *ngIf="control.get('urlType').invalid && (control.get('urlType').dirty || control.get('urlType').touched)"
+                  class="validation-err-msg">
+                  <div *ngIf="control.get('urlType').errors.required">
+                    URL Type is Required
+                  </div>
+                  <div *ngIf="control.get('urlType').errors.pattern">
+                    Enter valid URL Type
+                  </div>
+                </div>
+              </div>
+              <a class="delete" title="Delete" data-toggle="tooltip" (click)="deleteSocialInfo(i)"><i
+                  class="material-icons delete">&#xE872;</i></a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>
+            <button class="btn-primary" (click)="goBack()">Back</button>
+            <button class="btn-primary" (click)="addSocialInfo()">Add Social Info</button>
+            <button class="btn-primary" [disabled]="contactInfoFormGroup.status == 'INVALID'"
+              (click)="getContactInfoFormValue()">Next</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

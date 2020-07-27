@@ -1,0 +1,52 @@
+<div class="card">
+  <div class="card-body">
+    <div class="skillInfoFormGroup">
+      <form [formGroup]="skillInfoFormGroup">
+        <span class="validation-err-msg" *ngIf="minTwoSkills">Minimum Two Skills is Required</span>
+        <div *ngFor="let control of skillInfoFormArray.controls; let i=index">
+          <div [formGroup]="control" class="skillInfo">
+            <div class="form-field">
+              <label for="skillNam">Skill Name</label>
+              <input type="text" id="skillNam" required formControlName="skillName" list="skillsList"
+                (blur)="addSelectedSkill()">
+              <datalist id="skillsList">
+                <option *ngFor="let skillOption of skillOptions; let i=index" [value]="skillOption">
+                  {{ skillOption }}
+                </option>
+              </datalist>
+              <div
+                *ngIf="control.get('skillName').invalid && (control.get('skillName').dirty || control.get('skillName').touched)"
+                class="validation-err-msg">
+                <div *ngIf="control.get('skillName').errors.required">
+                  Social Name is Required
+                </div>
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="skillRat">Skill Rate</label>
+              <input type="text" id="skillRat" required formControlName="skillRate">
+              <div
+                *ngIf="control.get('skillRate').invalid && (control.get('skillRate').dirty || control.get('skillRate').touched)"
+                class="validation-err-msg">
+                <div *ngIf="control.get('skillRate').errors.required">
+                  Social Rate is Required
+                </div>
+                <div *ngIf="control.get('skillName').errors.pattern">
+                  Skill Rate Range between 1 to 10
+                </div>
+              </div>
+            </div>
+            <a class="delete" title="Delete" data-toggle="tooltip" (click)="deleteSkillInfo(i)"><i
+                class="material-icons delete">&#xE872;</i></a>
+          </div>
+        </div>
+        <div class="row">
+          <button class="btn-primary" routerLink="/contactInfo">Back</button>
+          <button class="btn-primary" (click)="addSkillInfo()">Add Skill</button>
+          <button class="btn-primary" [disabled]="skillInfoFormGroup.status == 'INVALID'"
+            (click)="getSkillInfoFormValue()">Next</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

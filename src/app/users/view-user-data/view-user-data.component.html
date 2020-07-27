@@ -1,0 +1,141 @@
+<div *ngIf="viewData">
+  <div>
+    <h4>General Information</h4>
+    <div class="details">
+      <div class="infoAlign">
+        <div>First name</div>
+        <div>:</div>
+        <div>{{viewData.firstName}}</div>
+      </div>
+      <div class="infoAlign">
+        <div>Last name</div>
+        <div>:</div>
+        <div>{{viewData.lastName}}</div>
+      </div>
+      <div class="infoAlign">
+        <div>Full Name</div>
+        <div>:</div>
+        <div>{{viewData.fullName}}</div>
+      </div>
+      <div class="infoAlign">
+        <div>Date of Birth</div>
+        <div>:</div>
+        <div>{{viewData.dateOfBirth}}</div>
+      </div>
+      <div class="infoAlign">
+        <div>Age</div>
+        <div>:</div>
+        <div>{{viewData.age}}</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h4>Contact Information</h4>
+    <div class="details">
+      <div class="infoAlign">
+        <div>Email</div>
+        <div>:</div>
+        <div>{{viewData.email}}</div>
+      </div>
+      <div class="infoAlign">
+        <div>Phone</div>
+        <div>:</div>
+        <div>{{viewData.phoneNumber}}</div>
+      </div>
+      <div *ngFor="let view of viewData.socialInfoArr; let i = index">
+        <h5>Social Info {{i+1}}</h5>
+        <div class="infoAlign">
+          <div>Social URL</div>
+          <div>:</div>
+          <div>{{view.socialURL}}</div>
+        </div>
+        <div class="infoAlign">
+          <div>URL Type</div>
+          <div>:</div>
+          <div>{{view.urlType}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h4>Skill Information</h4>
+    <div class="details">
+      <div *ngFor="let skill of viewData.skillInfoArr; let i = index">
+        <h5>Skill Info {{i+1}}</h5>
+        <div class="infoAlign">
+          <div>Skill Name</div>
+          <div>:</div>
+          <div>{{skill.skillName}}</div>
+        </div>
+        <div class="infoAlign">
+          <div>Skill Rate</div>
+          <div>:</div>
+          <div>{{skill.skillRate}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h4>Work Experience</h4>
+    <div class="details">
+      <div *ngFor="let work of viewData.workExperienceInfoArr; let i = index">
+        <h5>Work Experience Info {{i+1}}</h5>
+        <div class="infoAlign">
+          <div>Company Name</div>
+          <div>:</div>
+          <div>{{work.companyName}}</div>
+        </div>
+        <div class="infoAlign">
+          <div>City</div>
+          <div>:</div>
+          <div>{{work.city}}</div>
+        </div>
+        <div class="infoAlign">
+          <div>Country</div>
+          <div>:</div>
+          <div>{{work.country}}</div>
+        </div>
+        <div class="infoAlign">
+          <div>Company URL</div>
+          <div>:</div>
+          <div>{{work.companyURL}}</div>
+        </div>
+        <div class="infoAlign">
+          <div>Role</div>
+          <div>:</div>
+          <div>{{work.role}}</div>
+        </div>
+        <div class="infoAlign">
+          <div>From Date</div>
+          <div>:</div>
+          <div>{{work.fromDate}}</div>
+        </div>
+        <div class="infoAlign">
+          <div>To Date</div>
+          <div>:</div>
+          <div>{{work.toDate}}</div>
+        </div>
+        <div class="infoAlign">
+          <div>Experience</div>
+          <div>:</div>
+          <div>{{work.experience}}</div>
+        </div>
+      </div>
+      <div class="infoAlign">
+        <div>Total Year of Experience</div>
+        <div>:</div>
+        <div>{{viewData.totalExperience}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="back">
+    <button class="btn btn-primary" routerLink="/userTable">Back</button>
+  </div>
+</div>
+<div *ngIf="!viewData" class="viewPage">
+<div class="info-msg">There is no Data available!</div>
+<div class="back">
+  <button class="btn btn-primary" routerLink="/userTable">Back</button>
+</div>
+</div>
+

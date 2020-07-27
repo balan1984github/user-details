@@ -1,0 +1,43 @@
+.user {
+  margin-top: 26px;
+}
+
+.form-field {
+  margin-bottom: 20px;
+}
+
+.form-field label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.validation-err-msg {
+  display: block;
+  color:red;
+  font-weight: bold;
+  font-size:10px;
+}
+
+input {
+  margin-right: 50px;
+}
+
+button {
+  margin-right:12px;
+}
+
+.row .row {
+  margin-left:0px;
+}
+
+:disabled{
+  cursor: not-allowed;
+  opacity: .6;
+  background: #dc3545;
+}
+
+a.delete {
+  cursor: pointer;
+  color:#dc3545;
+}

@@ -1,0 +1,156 @@
+<div class="card">
+  <div class="card-body">
+    <div class="workExpInfoFormGroup">
+      <form [formGroup]="workExpInfoFormGroup">
+        <div *ngFor="let control of workExperienceInfoFormArray.controls; let i=index">
+          <div class="headerWithDelete">
+          <h6>Company Details {{ i+1 }}</h6>
+          <a class="material-icons delete" title="Delete" data-toggle="tooltip" (click)="deleteWorkExperienceInfo(i)"><i
+            class="material-icons delete">&#xE872;</i></a>
+          </div>
+          <hr>
+          <div [formGroup]="control">
+            <div class="row">
+              <div class="col-sm-6 col-md-4 col-xl-3 col-lg-3">
+                <div class="form-field">
+                  <label for="compName">Company Name</label>
+                  <input type="text" id="compName" formControlName="companyName" required minlength="3" maxlength="26">
+                  <div
+                    *ngIf="control.get('companyName').invalid && (control.get('companyName').dirty || control.get('companyName').touched)"
+                    class="validation-err-msg">
+                    <div *ngIf="control.get('companyName').errors.required">
+                      Company Name is required
+                    </div>
+                    <div *ngIf="control.get('companyName').errors.minlength">
+                      Company Name minimum length is 3
+                    </div>
+                    <div *ngIf="control.get('companyName').errors.minlength">
+                      Company Name maximum length is 15
+                    </div>
+                    <div *ngIf="control.get('companyName').errors.pattern">
+                      Enter only Alphabets
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 col-lg-3">
+                <div class="form-field">
+                  <label for="citi">City</label>
+                  <input type="text" id="citi" formControlName="city" required>
+                  <div *ngIf="control.get('city').invalid && (control.get('city').dirty || control.get('city').touched)"
+                    class="validation-err-msg">
+                    <div *ngIf="control.get('city').errors.required">
+                      City is required
+                    </div>
+                    <div *ngIf="control.get('city').errors.pattern">
+                      Enter only Alphabets
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 col-lg-3">
+                <div class="form-field">
+                  <label for="countr">Country</label>
+                  <input type="text" id="countr" formControlName="country" required>
+                  <div
+                    *ngIf="control.get('country').invalid && (control.get('country').dirty || control.get('country').touched)"
+                    class="validation-err-msg">
+                    <div *ngIf="control.get('country').errors.required">
+                      Country Name is required
+                    </div>
+                    <div *ngIf="control.get('country').errors.pattern">
+                      Enter only Alphabets
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 col-lg-3">
+                <div class="form-field">
+                  <label for="compURL">Company URL</label>
+                  <input type="text" id="compURL" formControlName="companyURL" required>
+                  <div
+                    *ngIf="control.get('companyURL').invalid && (control.get('companyURL').dirty || control.get('companyURL').touched)"
+                    class="validation-err-msg">
+                    <div *ngIf="control.get('companyURL').errors.required">
+                      Company URL is required
+                    </div>
+                    <div *ngIf="control.get('companyURL').errors.pattern">
+                      Enter valid URL
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 col-lg-3">
+                <div class="form-field">
+                  <label for="rol">Role</label>
+                  <input type="text" id="rol" formControlName="role" list="rolesList" (blur)="addSelectedRole()"
+                    required>
+                  <datalist id="rolesList">
+                    <option *ngFor="let roleOption of roleOptions; let i=index" [value]="roleOption">{{ roleOption }}
+                    </option>
+                  </datalist>
+                  <div *ngIf="control.get('role').invalid && (control.get('role').dirty || control.get('role').touched)"
+                    class="validation-err-msg">
+                    <div *ngIf="control.get('role').errors.required">
+                      Role is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 col-lg-3">
+                <div class="form-field">
+                  <label for="fDate">From Date</label>
+                  <input type="date" id="fDate" formControlName="fromDate" required>
+                  <div
+                    *ngIf="control.get('fromDate').invalid && (control.get('fromDate').dirty || control.get('fromDate').touched)"
+                    class="validation-err-msg">
+                    <div *ngIf="control.get('fromDate').errors.required">
+                      Enter your Joining Date
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 col-lg-3">
+                <div class="form-field">
+                  <label for="toDate">To Date</label>
+                  <input type="date" id="toDate" formControlName="toDate" (blur)="calcWorkExp(i)" required>
+
+                  <div
+                    *ngIf="control.get('toDate').invalid && (control.get('toDate').dirty || control.get('toDate').touched)"
+                    class="validation-err-msg">
+                    <div *ngIf="control.get('toDate').errors.required">
+                      Enter your Releiving Date
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-4 col-xl-3 col-lg-3">
+                <div class="form-field">
+                  <label for="workExp">Experience</label>
+                  <input type="text" id="workExp" formControlName="experience" [readonly]="true">
+                  <div class="validation-err-msg">
+                    <div *ngIf="control.get('experience').errors?.experience">
+                      Please choose valid Releiving Date
+                    </div>
+                  </div>
+                </div>
+               </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="totalExp">Total Year of Experience</label>
+          <input type="text" id="totalExp" formControlName="totalExperience" [readonly]="true">
+        </div>
+        <div class="row">
+          <div>
+            <button class="btn-primary" routerLink="/skillInfo">Back</button>
+            <button class="btn-primary" (click)="addNewWorkExperienceInfo()">Add Work Experience</button>
+            <button class="btn-primary" [disabled]="workExpInfoFormGroup.status == 'INVALID'"
+              (click)="getWorkExperienceInfoFormValue()">Next</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

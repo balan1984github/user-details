@@ -1,0 +1,4 @@
+<div class="user-table">
+  <button class="btn-primary addform" (click)="addForm()">Add New User</button>
+  <app-generic-table *ngIf="formData?.length" [data]="formData" [headers]="tableHeaders"></app-generic-table>
+</div>
